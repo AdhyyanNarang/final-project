@@ -1,11 +1,11 @@
 pragma solidity ^0.4.15;
 
-import './utils/SafeMath.sol';
+import './SafeMath.sol';
 
 contract MasterStorage {
 
- 	using SafeMath for uint;
- 	using SafeMath for uint256;
+  using SafeMath for uint;
+    using SafeMath for uint256;
 
   struct Project {
     bool exists;
@@ -21,7 +21,7 @@ contract MasterStorage {
     _;
   }
 
- 	mapping(address => mapping(string => Project)) allProjects;
+  mapping(address => mapping(string => Project)) allProjects;
 
 
   // commits the new hash of the project
@@ -33,20 +33,25 @@ contract MasterStorage {
   }
 
   // pull own project
-  function ownerPull(string _projectName) public returns(string) {
-    return allProjects[msg.sender][_projectName].hash;
+  function ownerPull(string _projectName, int _version) public returns(string) {
+    if (_version == -1) {
+        return allProjects[msg.sender][_projectName].hash;
+    }
+    return allProjects[msg.sender][_projectName].history[_version];
   }
 
   // pull anyones public project
   function guestPull(string _projectName, address _projectOwner) isPublic(_projectName, _projectOwner) public returns(string) {
     return allProjects[_projectOwner][_projectName].hash;
   }
+  
+  
 
   // initialize a project
   function init(string _projectName, bool _isPublic) public {
-    // if (allProjects[msg.sender][_projectName].exists) {
-    //   revert();
-    // }
+    if (allProjects[msg.sender][_projectName].exists) {
+      revert();
+    }
     allProjects[msg.sender][_projectName].exists = true;
     allProjects[msg.sender][_projectName].current = 0;
     allProjects[msg.sender][_projectName].isPublic = _isPublic;
