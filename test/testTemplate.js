@@ -3,7 +3,7 @@
 /* Add the dependencies you're testing */
 const MasterStorage = artifacts.require("./MasterStorage.sol");
 
-contract('Decentralized Github Test', function(accounts) {
+contract('Decentralized Github Tests', function(accounts) {
 
 	var masterstorage
 

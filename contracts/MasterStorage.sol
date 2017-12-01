@@ -44,9 +44,9 @@ contract MasterStorage {
 
   // initialize a project
   function init(string _projectName, bool _isPublic) public {
-    if (allProjects[msg.sender][_projectName].exists) {
-      revert();
-    }
+    // if (allProjects[msg.sender][_projectName].exists) {
+    //   revert();
+    // }
     allProjects[msg.sender][_projectName].exists = true;
     allProjects[msg.sender][_projectName].current = 0;
     allProjects[msg.sender][_projectName].isPublic = _isPublic;
