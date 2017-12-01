@@ -14,9 +14,13 @@ pip install ipfsapi
 
 ## Usage:
 Make sure projects are inside a directory named projects. This folder should be in the same diretory as ipfs.py.
-Run ipfs.py. </br>
+Run ipfs.py: 
+```
+python ipfs.py
+```
 DISCLAIMER: Every time the python script is run, a new blockchain is created with 0 projects stored. (for testing)
 
+### Commands:
 ```
 dgit init <project> // initializes the project
 dgit add <project> // stages the project for commits
