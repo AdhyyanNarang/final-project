@@ -6,6 +6,8 @@ A decentralized version of GitHub would ensure that the data is not managed by G
 
 
 ## Requirements
+Install ipfs from https://ipfs.io/docs/install/
+
 ```
 pip install web3[tester]
 pip install ipfsapi
