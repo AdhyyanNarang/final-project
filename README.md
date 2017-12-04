@@ -32,3 +32,9 @@ dgit remove <project> // removes the project
 ```
 
 solidity smart contract and truffle tests are provided, but not used in the python script
+
+## Project Structure
+* When a user initializes a project, that project is initilized as a struct in Ethereum and stored under the user's Ethereum address
+* When a user commits a project, the project is first stored in ipfs. The hash of the location is stored under the project struct
+* When a user pulls a project, the project hash is retrieved from the Ethereum network and used to download the file from the ipfs network
+* When a user removes a project, the project is cleared from their Ethereum address
